@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "reactstrap";
+import InfoPopup from "./InfoPopup";
+import classes from "./UserListItem.module.css";
 
 const UserListItem = ({ user, onDeleteClick }) => {
+  const [ishovered, setIshovered] = useState(false);
   const stringToHslColor = (str = "") => {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -13,7 +16,7 @@ const UserListItem = ({ user, onDeleteClick }) => {
   };
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex" }} className={classes.main}>
       <div
         style={{
           margin: "auto 0",
@@ -34,7 +37,11 @@ const UserListItem = ({ user, onDeleteClick }) => {
       <div style={{ margin: "auto 0", flexGrow: 1, paddingLeft: "10px" }}>
         {user.firstName} {user.lastName}
       </div>
-      <div style={{ margin: "auto 0" }}>
+      <div
+        style={{ margin: "auto 0", position: "" }}
+        onMouseEnter={() => setIshovered(true)}
+        onMouseLeave={() => setIshovered(false)}
+      >
         <Button
           size="sm"
           color="danger"
@@ -43,6 +50,11 @@ const UserListItem = ({ user, onDeleteClick }) => {
         >
           Delete
         </Button>
+        <div className={classes.popup}>
+          {ishovered && (
+            <InfoPopup user={user} className={classes.popupinner} />
+          )}
+        </div>
       </div>
     </div>
   );

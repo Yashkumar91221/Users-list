@@ -1,0 +1,20 @@
+.main {
+  position: relative;
+  width: auto;
+}
+
+.popup {
+  position: absolute;
+  left: 450px;
+  top: 0px;
+  /* text-align: left; */
+}
+.popupinner {
+  width: auto;
+  background-color: rgb(224, 226, 226);
+  /* position: absolute; */
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 0.8rem;
+}

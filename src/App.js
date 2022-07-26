@@ -29,6 +29,10 @@ const App = () => {
   };
 
   const handleDeleteUserClick = (userId) => {
+    const request = new XMLHttpRequest();
+    request.open("GET", " http://localhost:3002/users");
+    request.send();
+    console.log(request);
     dispatch(delete_user_request(userId));
   };
 
@@ -43,7 +47,7 @@ const App = () => {
         {users.error}
       </Alert>
       <NewUserForm onSubmit={handleCreateUserSubmit} />
-      {!!users.users && !!users.users.length && (
+      {users.users && users.users.length && (
         <UserList
           onDeleteUserClick={handleDeleteUserClick}
           users={users.users}
